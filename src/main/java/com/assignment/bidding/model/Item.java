@@ -1,5 +1,6 @@
 package com.assignment.bidding.model;
 
+import com.assignment.bidding.enums.Status;
 import jakarta.persistence.*;
 import jdk.jfr.Registered;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class Item {
 
     private BigDecimal price;
 
-    private String status;
+    private Status status;
 
     @OneToOne
     private Session session;

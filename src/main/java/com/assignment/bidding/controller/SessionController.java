@@ -20,7 +20,7 @@ public class SessionController {
 
     @GetMapping
     public ResponseEntity<?> getAllItems() {
-        List<Item> items = itemService.getAllItems();
+        List<Item> items = itemService.getActiveItems();
         return ResponseEntity.ok(items.stream().map(itemMapper::toItemDto).toList());
     }
 

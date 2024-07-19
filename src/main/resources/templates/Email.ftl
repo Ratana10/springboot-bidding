@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Email</title>
+    <title>Congratulations!</title>
 </head>
 <body>
-    <h1>Hello from Bidding Website</h1>
-    <h3>You winning the item: ${winningItem}</h3>
+    <p>Dear ${username}</p>
+    <p>You have won the bid for item <strong>${item}</strong></p>
+    <p>With the bid amount <strong>${amount} $</strong></p>
 </body>
 </html>

@@ -8,6 +8,6 @@ import java.util.List;
 public interface ItemService {
     Item postItem(Item item);
     Item findById(Long itemId);
-    List<Item> getAllItems();
-    Item updateSession(Long itemId, Session session);
+    List<Item> getActiveItems();
+    void updateSession(Long itemId, Session session);
 }
