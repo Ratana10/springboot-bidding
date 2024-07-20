@@ -24,6 +24,22 @@ spring:
             enable: true
   freemarker:
     template-loader-path: classpath:/templates/
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1087993950063-3itspaumnrbngne05mm9v7sbbhui60r3.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - openid
+              - profile
+              - email
+
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
 server:
   port: 8080
 
