@@ -8,6 +8,7 @@ import com.assignment.bidding.service.BidService;
 import com.assignment.bidding.util.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/bids")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('BIDDER')")
 public class BidController {
     private final BidService bidService;
     private final BidMapper bidMapper;

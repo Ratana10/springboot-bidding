@@ -63,20 +63,20 @@ public class InitDatabase implements CommandLineRunner {
             List<User> list = List.of(client1, client2, bidder1, bidder2, bidder3);
             userRepository.saveAll(list);
 
-            Item item1 = Item.builder()
-                    .name("Shoes")
-                    .price(BigDecimal.valueOf(10))
-                    .status(Status.ACTIVE)
-                    .build();
-
-            Item item2 = Item.builder()
-                    .name("Laptop")
-                    .price(BigDecimal.valueOf(10))
-                    .status(Status.ACTIVE)
-                    .build();
-
-            List<Item> items = List.of(item1, item2);
-            itemRepository.saveAll(items);
+//            Item item1 = Item.builder()
+//                    .name("Shoes")
+//                    .price(BigDecimal.valueOf(10))
+//                    .status(Status.ACTIVE)
+//                    .build();
+//
+//            Item item2 = Item.builder()
+//                    .name("Laptop")
+//                    .price(BigDecimal.valueOf(10))
+//                    .status(Status.ACTIVE)
+//                    .build();
+//
+//            List<Item> items = List.of(item1, item2);
+//            itemRepository.saveAll(items);
         }
     }
 }

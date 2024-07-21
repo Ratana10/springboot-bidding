@@ -9,6 +9,7 @@ import com.assignment.bidding.service.BidService;
 import com.assignment.bidding.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +17,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('BIDDER')")
 public class UserController {
-    private final UserService userService;
     private final BidService bidService;
-    private final UserMapper userMapper;
     private final BidMapper bidMapper;
-
-    @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody UserDto dto) {
-        User user = userMapper.toUser(dto);
-        user = userService.createUser(user);
-        return ResponseEntity.ok(userMapper.toUserDto(user));
-    }
 
     @GetMapping("{userId}/bid-history")
     public ResponseEntity<?> viewBidHistory(@PathVariable Long userId) {

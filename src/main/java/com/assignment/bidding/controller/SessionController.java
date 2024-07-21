@@ -5,6 +5,7 @@ import com.assignment.bidding.model.Item;
 import com.assignment.bidding.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/sessions")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('BIDDER')")
 public class SessionController {
     private final ItemService itemService;
     private final ItemMapper itemMapper;
