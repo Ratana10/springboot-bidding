@@ -1,5 +1,6 @@
 package com.assignment.bidding.model;
 
+import com.assignment.bidding.config.auditing.AuditingEntity;
 import com.assignment.bidding.enums.BidStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "bids")
-public class Bid {
+public class Bid extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

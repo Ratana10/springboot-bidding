@@ -20,7 +20,6 @@ public class BidDto {
     @NotNull(message = "itemId is required")
     private Long itemId;
 
-    @NotNull(message = "bidderId is required")
     private Long bidderId;
 
     private LocalDateTime date;
