@@ -19,14 +19,31 @@ import java.time.LocalDateTime;
 @SoftDelete
 public abstract class AuditingEntity {
     @CreatedDate
+    @Column(
+            name = "created_at",
+            nullable = false,
+            updatable = false
+    )
     private LocalDateTime createdAt;
 
     @LastModifiedDate
+    @Column(
+            name = "updated_at",
+            insertable = false
+    )
     private LocalDateTime updatedAt;
 
     @CreatedBy
+    @Column(
+            name = "created_by",
+            updatable = false
+    )
     private Long createdBy;
 
     @LastModifiedBy
+    @Column(
+            name = "updated_by",
+            insertable = false
+    )
     private Long updatedBy;
 }
