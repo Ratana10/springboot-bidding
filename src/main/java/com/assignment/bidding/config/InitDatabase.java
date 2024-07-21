@@ -8,6 +8,7 @@ import com.assignment.bidding.repository.ItemRepository;
 import com.assignment.bidding.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ import java.util.List;
 public class InitDatabase implements CommandLineRunner {
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -26,35 +28,35 @@ public class InitDatabase implements CommandLineRunner {
         if (all.isEmpty()) {
             User client1 = User.builder()
                     .username("client1")
-                    .password("client1")
+                    .password(passwordEncoder.encode("client1"))
                     .email("sanratana18@gmail.com")
                     .role(Role.CLIENT)
                     .build();
 
             User client2 = User.builder()
                     .username("client2")
-                    .password("client2")
+                    .password(passwordEncoder.encode("client2"))
                     .email("sanratana18@gmail.com")
                     .role(Role.CLIENT)
                     .build();
 
             User bidder1 = User.builder()
                     .username("bidder1")
-                    .password("bidder1")
+                    .password(passwordEncoder.encode("bidder1"))
                     .email("sanratana18@gmail.com")
                     .role(Role.BIDDER)
                     .build();
 
             User bidder2 = User.builder()
                     .username("bidder2")
-                    .password("bidder2")
+                    .password(passwordEncoder.encode("bidder2"))
                     .email("sanratana18@gmail.com")
                     .role(Role.BIDDER)
                     .build();
 
             User bidder3 = User.builder()
                     .username("bidder3")
-                    .password("bidder3")
+                    .password(passwordEncoder.encode("bidder3"))
                     .email("sanratana18@gmail.com")
                     .role(Role.BIDDER)
                     .build();

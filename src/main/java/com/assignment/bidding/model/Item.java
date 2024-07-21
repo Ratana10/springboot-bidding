@@ -1,5 +1,6 @@
 package com.assignment.bidding.model;
 
+import com.assignment.bidding.config.auditing.AuditingEntity;
 import com.assignment.bidding.enums.Status;
 import jakarta.persistence.*;
 import jdk.jfr.Registered;
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @Table(name = "items")
-public class Item {
+public class Item extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,5 +1,6 @@
 package com.assignment.bidding.model;
 
+import com.assignment.bidding.config.auditing.AuditingEntity;
 import com.assignment.bidding.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Session {
+public class Session extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
