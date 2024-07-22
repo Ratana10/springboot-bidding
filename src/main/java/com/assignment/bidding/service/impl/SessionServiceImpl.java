@@ -30,7 +30,7 @@ public class SessionServiceImpl implements SessionService {
     public Session startNewSession(Item item, Bid bid) {
         Session session = Session.builder()
                 .startTime(LocalDateTime.now())
-                .endTime(LocalDateTime.now().plusMinutes(2))
+                .endTime(LocalDateTime.now().plusMinutes(5))
                 .highestAmount(bid.getAmount())
                 .item(item)
                 .status(Status.ACTIVE)

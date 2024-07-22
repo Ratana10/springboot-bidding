@@ -2,11 +2,15 @@ package com.assignment.bidding.controller;
 
 import com.assignment.bidding.dto.UserDto;
 import com.assignment.bidding.mapper.BidMapper;
+import com.assignment.bidding.mapper.ItemMapper;
 import com.assignment.bidding.mapper.UserMapper;
 import com.assignment.bidding.model.Bid;
+import com.assignment.bidding.model.Item;
 import com.assignment.bidding.model.User;
 import com.assignment.bidding.service.BidService;
+import com.assignment.bidding.service.ItemService;
 import com.assignment.bidding.service.UserService;
+import com.assignment.bidding.util.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,27 +21,39 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('BIDDER')")
 public class UserController {
     private final BidService bidService;
     private final BidMapper bidMapper;
+    private final ItemService itemService;
+    private final ItemMapper itemMapper;
 
-    @GetMapping("{userId}/bid-history")
-    public ResponseEntity<?> viewBidHistory(@PathVariable Long userId) {
-        List<Bid> bids = bidService.viewBidHistory(userId);
+    @GetMapping("/bid-history")
+    public ResponseEntity<?> viewBidHistory() {
+        Long bidderId = Utils.getUserIdFromContext();
+        List<Bid> bids = bidService.viewBidHistory(bidderId);
         return ResponseEntity.ok(bids.stream().map(bidMapper::toBidDto));
     }
 
-    @GetMapping("{userId}/win-history")
-    public ResponseEntity<?> viewWinHistory(@PathVariable Long userId) {
-        List<Bid> bids = bidService.viewWinBidHistory(userId);
+    @GetMapping("/win-history")
+    public ResponseEntity<?> viewWinHistory() {
+        Long bidderId = Utils.getUserIdFromContext();
+        List<Bid> bids = bidService.viewWinBidHistory(bidderId);
         return ResponseEntity.ok(bids.stream().map(bidMapper::toBidDto));
     }
 
-    @GetMapping("{userId}/lost-history")
-    public ResponseEntity<?> viewLostHistory(@PathVariable Long userId) {
-        List<Bid> bids = bidService.viewLostBidHistory(userId);
+    @GetMapping("/lost-history")
+    public ResponseEntity<?> viewLostHistory() {
+        Long bidderId = Utils.getUserIdFromContext();
+
+        List<Bid> bids = bidService.viewLostBidHistory(bidderId);
         return ResponseEntity.ok(bids.stream().map(bidMapper::toBidDto));
+    }
+
+    @GetMapping("/items")
+    public ResponseEntity<?> viewAllItemByOwner() {
+        Long clientId = Utils.getUserIdFromContext();
+        List<Item> items = itemService.getItemsByOwner(clientId);
+        return ResponseEntity.ok(items.stream().map(itemMapper::toItemDto));
     }
 
 

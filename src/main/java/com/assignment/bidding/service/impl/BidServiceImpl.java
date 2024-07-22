@@ -1,5 +1,7 @@
 package com.assignment.bidding.service.impl;
 
+import com.assignment.bidding.config.exception.BidAmountTooLowException;
+import com.assignment.bidding.config.exception.SessionEndedException;
 import com.assignment.bidding.enums.BidStatus;
 import com.assignment.bidding.model.Bid;
 import com.assignment.bidding.model.Item;
@@ -41,11 +43,11 @@ public class BidServiceImpl implements BidService {
         } else {
             // check if session has end
             if (now.isAfter(session.getEndTime())) {
-                throw new RuntimeException("bidding session has ended");
+                throw new SessionEndedException("bidding session has ended");
             }
             // check bid amount compare to the previous amount
             if (bid.getAmount().compareTo(session.getHighestAmount()) <= 0) {
-                throw new RuntimeException("bid amount must be higher than current bid");
+                throw new BidAmountTooLowException("bid amount must be higher than current bid");
             }
 
             // update the previous bid set to lost

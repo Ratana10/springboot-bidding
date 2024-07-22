@@ -37,4 +37,9 @@ public class ItemServiceImpl implements ItemService {
         item.setSession(session);
         itemRepository.save(item);
     }
+
+    @Override
+    public List<Item> getItemsByOwner(Long clientId) {
+        return itemRepository.findByCreatedBy(clientId);
+    }
 }

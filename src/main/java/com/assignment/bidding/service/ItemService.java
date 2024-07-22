@@ -10,4 +10,5 @@ public interface ItemService {
     Item findById(Long itemId);
     List<Item> getActiveItems();
     void updateSession(Long itemId, Session session);
+    List<Item> getItemsByOwner(Long clientId);
 }
